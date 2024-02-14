@@ -40,8 +40,13 @@ function App() {
     <>
       <NavBar />
       <main className="flex flex-col items-center justify-center h-screen">
-
-        <PokedexCard creature={creatures[0]} />
+        <div className="flex flex-wrap gap-4">
+      {creatures.map((creature) => (
+        <div>
+          <PokedexCard creature={creature} key={creature.id} />
+        </div>
+      ))}
+      </div>
 
       </main>
     </>
