@@ -1,10 +1,9 @@
-const router = require('express').Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+import express from 'express';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import jsSecret from '../prisma/DB/PAL.db';
 
-const Users = require('./auth-model.js');
-
-const jsSecret = require('../database/config/secrets');
+const router = express.Router();
 
 router.get('/users', (req, res) => {
   Users.getUsers()
