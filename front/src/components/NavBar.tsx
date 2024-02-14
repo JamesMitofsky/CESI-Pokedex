@@ -9,7 +9,7 @@ export default function NavBar() {
       </div>
       <div className="flex items-center space-x-4">
         <Button variant="ghost">Accueil</Button>
-        <Button variant="ghost">Inscription</Button>
+        <Button variant="ghost">Se connecter</Button>
         <RoundImageDisplay src="https://github.com/shadcn.png" fallbackText="user" />
       </div>
     </header>
