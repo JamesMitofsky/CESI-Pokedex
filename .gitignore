@@ -134,5 +134,5 @@ dist
 dev.session.sql
 
 #VSgitCode
-.vscode/*
-.vscode/settings.json
+/.vscode
+/.vscode/settings.json
