@@ -1,4 +1,4 @@
-const { Prisma } = require("@prisma/client");
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 exports.getUsers = async (req, res) => {
@@ -12,4 +12,9 @@ exports.addUser = async (req, res) => {
     data: { name, email },
   });
   res.json(user);
+};
+
+exports.getPals = async (req, res) => {
+  const pals = await prisma.pal.findMany();
+  res.json(pals);
 };
