@@ -1,10 +1,14 @@
-// Exemple d'un middleware d'authentification basique
-exports.verifyToken = (req, res, next) => {
-    const token = req.cookies["authToken"];
+const jwt = require("jsonwebtoken");
 
-    if (token === "secretToken") {
-        next();
-    } else {
-        res.status(401).send("Accès refusé");
-    }
+module.exports = (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, "RANDOM TOKEN SECRET");
+    const id = decodedToken.id;
+    req.auth = {
+      id: id,
+    };
+  } catch (error) {
+    res.status(401).json({ error });
+  }
 };
