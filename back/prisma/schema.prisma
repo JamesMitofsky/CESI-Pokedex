@@ -1,17 +1,17 @@
 // Définit la source de données, en utilisant SQLite
 datasource db {
-  provider = "sqlite"
-  url = env("DATABASE_URL")
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
 }
 
 // Générateur Prisma Client
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 // Modèle d'exemple pour un utilisateur
 model User {
-  id Int @id @default(autoincrement())
-  name String
-  email String @unique
+    id    Int    @id @default(autoincrement())
+    name  String
+    email String @unique
 }
