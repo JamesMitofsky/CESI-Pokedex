@@ -69,12 +69,9 @@
 }
 
 @layer base {
-  * {
-    @apply overflow-auto;
-  }
   body,
   #root {
-    @apply flex flex-col bg-background text-foreground;
+    @apply flex flex-col bg-background text-foreground overflow-auto;
   }
   body,
   html {
