@@ -16,3 +16,10 @@ model Pals {
   WorksFor     String
   Drops        String
 }
+
+model User {
+  ID Int @id @default(autoincrement())
+  Name String 
+  Email String 
+  Password String 
+}
