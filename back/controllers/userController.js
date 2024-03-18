@@ -3,17 +3,18 @@ import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
+const secretKey = "moncodesecret";
 
 exports.getUsers = async (req, res) => {
   const users = await prisma.user.findMany();
   res.json(users);
 };
 
-/*exports.loginUser = async (req, res) => {
+exports.loginUser = async (req, res) => {
   const { Email, Password } = req.body;
 
   try {
-    const user = await prisma.user.findUnique({ where: { Email } });
+    const user = await prisma.user.findFirst({ where: { Email } });
 
     if (!user) {
       return res.status(401).json({ error: "Invalid email or password" });
@@ -25,7 +26,7 @@ exports.getUsers = async (req, res) => {
       return res.status(401).json({ error: "Invalid email or password" });
     }
 
-    const token = jwt.sign({ userId: user.id }, secretKey, {
+    const token = jwt.sign({ userId: user.ID }, secretKey, {
       expiresIn: "12h",
     });
 
@@ -35,7 +36,6 @@ exports.getUsers = async (req, res) => {
     res.status(500).json({ error: "Could not log in user" });
   }
 };
-*/
 
 exports.registerUser = async (req, res) => {
   const { Name, Email, Password } = req.body;
