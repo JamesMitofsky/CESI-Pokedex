@@ -9,9 +9,9 @@ import {
 
 import { Creature } from "../../types/creature";
 
-export default function PokedexCard({ creature }: { creature: Creature }) {
+export default function PokedexCard({ creature, setSelectedCreature }: { creature: Creature, setSelectedCreature: (creature: Creature) => void}) {
   return (
-    <Card>
+    <Card onClick={() => setSelectedCreature(creature)}>
       <CardHeader>
         <CardTitle>{creature.name}</CardTitle>
         <CardDescription>
