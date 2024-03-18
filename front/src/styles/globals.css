@@ -77,7 +77,8 @@
     @apply h-full min-h-screen;
   }
 
-  #root {
+  #root,
+  body {
     @apply h-full;
   }
 }
