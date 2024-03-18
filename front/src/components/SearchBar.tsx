@@ -40,17 +40,14 @@ export function InputForm() {
           control={form.control}
           name="searchValue"
           render={({ field }) => (
-            <FormItem >
-              
+            <FormItem >              
               <FormControl>
                 <Input placeholder="Chercher un pal.." {...field} />
               </FormControl>
-             
-              
             </FormItem>
           )}
         />
-        <Button className="mt-0" type="submit">Chercher</Button>
+        <Button type="submit">Chercher</Button>
       </form>
     </Form>
   )
