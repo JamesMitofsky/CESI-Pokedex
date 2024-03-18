@@ -16,7 +16,6 @@ router.get("/users", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  // implement registration
   let newUser = req.body;
   const hash = bcrypt.hashSync(newUser.password, 16);
   newUser.password = hash;
@@ -31,7 +30,6 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  // implement login
   let { username, password } = req.body;
   console.log(`THIS IS REQ.BODY 1`, req.body);
   Users.userLogin({ username })
