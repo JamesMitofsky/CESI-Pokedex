@@ -9,7 +9,7 @@ exports.getUsers = async (req, res) => {
   res.json(users);
 };
 
-exports.loginUser = async (req, res) => {
+/*exports.loginUser = async (req, res) => {
   const { Email, Password } = req.body;
 
   try {
@@ -35,6 +35,7 @@ exports.loginUser = async (req, res) => {
     res.status(500).json({ error: "Could not log in user" });
   }
 };
+*/
 
 exports.registerUser = async (req, res) => {
   const { Name, Email, Password } = req.body;
@@ -53,12 +54,11 @@ exports.registerUser = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-  const { ID } = req.params;
-  const { Name, Email } = req.body;
+  const { ID, Name, Email } = req.body;
 
   try {
     const updatedUser = await prisma.user.update({
-      where: { ID: parseInt(ID) },
+      where: { ID: ID },
       data: { Name, Email },
     });
     res.json(updatedUser);
@@ -69,11 +69,11 @@ exports.updateUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-  const { ID } = req.params;
+  const { ID } = req.body;
 
   try {
     await prisma.user.delete({
-      where: { ID: parseInt(ID) },
+      where: { ID: ID },
     });
     res.json({ message: "User deleted successfully" });
   } catch (error) {
