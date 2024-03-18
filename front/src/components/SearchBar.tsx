@@ -18,9 +18,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 
 const FormSchema = z.object({
-    searchValue: z.string().min(2, {
-    message: "Il nous faut au moins 2 charachter pour effectuer une recherche.",
-  }),
+    searchValue: z.string()
 })
 
 export function InputForm() {
@@ -32,14 +30,7 @@ export function InputForm() {
   })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    })
+    console.log(data);
   }
 
   return (
@@ -55,7 +46,7 @@ export function InputForm() {
                 <Input placeholder="Chercher un pal.." {...field} />
               </FormControl>
              
-              <FormMessage />
+              
             </FormItem>
           )}
         />
