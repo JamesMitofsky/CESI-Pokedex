@@ -57,7 +57,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <main className="flex flex-col items-center justify-center h-screen">
+      <main className="flex flex-col items-center justify-center h-full">
         <InputForm />
         <div className="flex flex-wrap gap-4">
       {creatures.map((creature) => (

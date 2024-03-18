@@ -71,10 +71,13 @@
 @layer base {
   body,
   #root {
-    @apply flex flex-col bg-background text-foreground overflow-auto;
+    @apply flex flex-col bg-background text-foreground;
   }
-  body,
   html {
     @apply h-full min-h-screen;
+  }
+
+  #root {
+    @apply h-full;
   }
 }
