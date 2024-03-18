@@ -59,7 +59,7 @@ function App() {
       <NavBar />
       <main className="flex flex-col items-center justify-center h-full">
         <InputForm />
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 justify-center">
       {creatures.map((creature) => (
 
           <PokedexCard creature={creature} key={creature.id} setSelectedCreature={setSelectedCreature} />

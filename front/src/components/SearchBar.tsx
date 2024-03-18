@@ -63,7 +63,7 @@ async function onSubmit(data: z.infer<typeof FormSchema>) {
 }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 flex justify-center items-center gap-5 mb-10">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex justify-center items-center gap-5 m-10">
         <FormField 
           control={form.control}
           name="searchValue"
