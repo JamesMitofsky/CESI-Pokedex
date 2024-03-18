@@ -13,8 +13,3 @@ exports.addUser = async (req, res) => {
   });
   res.json(user);
 };
-
-exports.getPals = async (req, res) => {
-  const pals = await prisma.pal.findMany();
-  res.json(pals);
-};

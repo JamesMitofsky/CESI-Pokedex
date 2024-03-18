@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 import userRoutes from "./routes/userRoutes";
 import palRoutes from "./routes/palRoutes";
@@ -17,9 +19,6 @@ const helmetOptions = {
 };
 
 const app = express();
-const User = require("./models/User");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
 app.use(express.json()); // Pour parser les corps de requêtes en JSON
 
@@ -33,9 +32,8 @@ exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
-      const user = new User({
-        email: req.body.email,
-        password: hash,
+      const user = prisma.user.findUnique({
+        where: { email: req.body.email, password: hash },
       });
       user
         .save()
@@ -81,7 +79,6 @@ exports.signup = (req, res, next) => {
       .catch((error) => {
         res.status(500).json({ error });
       });
-
-    module.exports = app;
   };
 };
+module.exports = app;
