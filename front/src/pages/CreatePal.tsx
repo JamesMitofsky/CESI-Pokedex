@@ -1,8 +1,44 @@
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+const formInputInfo = [
+  {
+    id: "name",
+    label: "Nom",
+    placeholder: "Quel nom du Pal",
+  },
+  {
+    id: "element",
+    label: "Element",
+    placeholder: "Quel element ?",
+  },
+  {
+    id: "creatureNumber",
+    label: "Numéro Pal",
+    placeholder: "Quel est le numero du Pal?",
+  },
+  {
+    id: "skills",
+    label: "Skills",
+    placeholder: "Quelles competences du Pal ?",
+  },
+  {
+    id: "dropsWhenDefeated",
+    label: "Drops",
+    placeholder: "Quels drops ?",
+  },
+  {
+    id: "worksForName",
+    label: "Domaine dans lequel ce Pal travaille",
+    placeholder: "Dans quel domaine travail ce Pal ?",
+  },
+  {
+    id: "worksForLevel",
+    label: "Niveau du Royaume",
+    placeholder: "Quel niveau du Royaume a ce Pal ?",
+  },
+] as const;
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,22 +54,27 @@ import { Input } from "@/components/ui/input";
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Username must be at least 2 characters.",
-   
   }),
   element: z.string().min(2, {
     message: "Username must be at least 2 characters.",
-   
   }),
   creatureNumber: z.string().min(2, {
     message: "Username must be at least 2 characters.",
-   
   }),
 
-    skills: z.string().min(2, {  message: "Username must be at least 2 characters.",}),
-    dropsWhenDefeated: z.string().min(2, {  message: "Username must be at least 2 characters.",}),
-    worksForName: z.string().min(2, {  message: "Username must be at least 2 characters.",}),
-    worksForLevel: z.string().min(2, {  message: "Username must be at least 2 characters.",}),
-})
+  skills: z
+    .string()
+    .min(2, { message: "Username must be at least 2 characters." }),
+  dropsWhenDefeated: z
+    .string()
+    .min(2, { message: "Username must be at least 2 characters." }),
+  worksForName: z
+    .string()
+    .min(2, { message: "Username must be at least 2 characters." }),
+  worksForLevel: z
+    .string()
+    .min(2, { message: "Username must be at least 2 characters." }),
+});
 
 export default function CreatePal() {
   // 1. Define your form.
@@ -48,117 +89,37 @@ export default function CreatePal() {
       worksForName: "",
       worksForLevel: "",
     },
-  })
+  });
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
+    console.log(values);
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>name</FormLabel>
-              <FormControl>
-                <Input placeholder="Nom du Pal" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="element"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Element</FormLabel>
-              <FormControl>
-                <Input placeholder="Quel element?" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="creatureNumber"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Creature Number</FormLabel>
-              <FormControl>
-                <Input placeholder="Numero de Pal?" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="skills"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Skills</FormLabel>
-              <FormControl>
-                <Input placeholder="Skills du Pal?" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="dropsWhenDefeated"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Drops when Defeated</FormLabel>
-              <FormControl>
-                <Input placeholder="Quels drops?" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="worksForName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Works For Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Pour qui il travaille ce Pal?" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="worksForLevel"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Level of the Kingdom</FormLabel>
-              <FormControl>
-                <Input placeholder="Quelle niveau du Royaume?" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-
-        <Button type="submit">Submit</Button>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-center">
+        <div className="w-full flex flex-wrap gap-4 justify-center">
+          {formInputInfo.map(({ id, label, placeholder }) => (
+            <FormField
+              control={form.control}
+              name={id}
+              render={({ field }) => (
+                <FormItem className="flex flex-col w-96 m-2">
+                  <FormLabel>{label}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={placeholder} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
+        </div>
+        <Button className="w-96 m-auto mt-4 max-w-96" type="submit">Créer</Button>
       </form>
     </Form>
-  )
+  );
 }
