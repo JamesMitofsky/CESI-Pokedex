@@ -27,7 +27,7 @@ function App() {
   return (
     <Router>
       <NavBar />
-      <main className="flex flex-col items-center justify-center h-full">
+      <main className="flex grow flex-col items-center justify-center">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
