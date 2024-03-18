@@ -8,7 +8,8 @@ const LoginForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Ajoutez votre logique de connexion ici
+
+    
     // Redirection vers la page d'accueil
     navigate('/');
   };
