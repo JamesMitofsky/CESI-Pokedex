@@ -1,16 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import PlusSignSvg from "../assets/plus-sign.svg";
 
 export default function LinkToCreationPageButton() {
-    return (
-        <div>
-          <Link to="/creationPage">
-            <div className="absolute bottom-4 right-48 flex justify-center items-center">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-3 rounded-full">
-                <span className="text-3xl py-3 px-3">+</span>
-              </button>
-            </div>
-          </Link>
-        </div>
-      );
+  return (
+    <Link
+      className="absolute bottom-0 right-0 m-10 flex justify-center items-center text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold p-3 rounded-full"
+      to="/creationPage"
+    >
+      <img src={PlusSignSvg} className="w-10" />
+    </Link>
+  );
 }
