@@ -8,11 +8,36 @@ datasource db {
 }
 
 model Pals {
-  ID           Int    @id @default(autoincrement())
+  idPals       Int @id @default(autoincrement())
+  Number String
   Name         String
-  Number       Int
-  Element      String
-  PartnerSkill String
-  WorksFor     String
-  Drops        String
+  Url String
+  elements Element[]
+  PartnerSkills PartnerSkill[]
+  WorksFor WorksFor []
+  Drops Drop[]
+}
+
+model Element {
+  idElement Int @id @default(autoincrement())
+  Name String
+  pals Pals[]
+}
+
+model PartnerSkill {
+  idPartnerSkill Int @id @default(autoincrement())
+  libelle String
+  pals Pals[]
+}
+
+model WorksFor {
+  idWorksFor Int @id @default(autoincrement())
+  libelle String
+  pals Pals[]
+}
+
+model Drop {
+  idDrop Int @id @default(autoincrement())
+  Name String
+  pals Pals[]
 }
