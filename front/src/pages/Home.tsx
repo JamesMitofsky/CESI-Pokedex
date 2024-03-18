@@ -3,6 +3,7 @@ import { Creature } from "../../types/creature";
 import { InputForm } from "../components/SearchBar";
 import { useState, useEffect } from "react";
 import CreatureDialog from "../components/CreatureDialog";
+import LinkCreation from "../components/LinkToCreationPageButton";
 
 const creatures: Creature[] = [
   {
@@ -66,6 +67,9 @@ function App() {
         ))}
       </div>
 
+    <div className="pb-16">
+      <LinkCreation/>
+    </div>
       <CreatureDialog
         open={isDialogOpen}
         setOpen={setIsDialogOpen}
