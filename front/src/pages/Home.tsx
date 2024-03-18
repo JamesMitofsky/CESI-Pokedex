@@ -1,47 +1,46 @@
-import NavBar from "../components/NavBar";
 import PokedexCard from "../components/PokedexCard";
 import { Creature } from "../../types/creature";
 import { InputForm } from "../components/SearchBar";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import CreatureDialog from "../components/CreatureDialog";
 
 const creatures: Creature[] = [
   {
     id: 1,
-    name: 'Dragon',
+    name: "Dragon",
     number: 101,
-    element: 'Feu',
-    partnerSkill: 'Fire Breath',
+    element: "Feu",
+    partnerSkill: "Fire Breath",
     worksFor: [
       {
-        name: 'Fire Kingdom',
-        level: 5
-      }
+        name: "Fire Kingdom",
+        level: 5,
+      },
     ],
-    drop: ['Dragon Scale', 'Dragon Tooth']
+    drop: ["Dragon Scale", "Dragon Tooth"],
   },
   {
     id: 2,
-    name: 'Mermaid',
+    name: "Mermaid",
     number: 102,
-    element: 'Eau',
-    partnerSkill: 'Water Control',
+    element: "Eau",
+    partnerSkill: "Water Control",
     worksFor: [
       {
-        name: 'Ocean Kingdom',
-        level: 4
-      }
+        name: "Ocean Kingdom",
+        level: 4,
+      },
     ],
-    drop: ['Mermaid Scale', 'Pearl']
+    drop: ["Mermaid Scale", "Pearl"],
   },
   // Add more creatures as needed
 ];
 
-
 function App() {
-
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedCreature, setSelectedCreature] = useState<Creature | null>(null);
+  const [selectedCreature, setSelectedCreature] = useState<Creature | null>(
+    null
+  );
 
   useEffect(() => {
     if (selectedCreature) {
@@ -56,22 +55,24 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <main className="flex flex-col items-center justify-center h-full">
-        <InputForm />
-        <div className="w-full flex flex-wrap gap-4 justify-center">
-      {creatures.map((creature) => (
-
-          <PokedexCard creature={creature} key={creature.id} setSelectedCreature={setSelectedCreature} />
-
-      ))}
+      <InputForm />
+      <div className="w-full flex flex-wrap gap-4 justify-center">
+        {creatures.map((creature) => (
+          <PokedexCard
+            creature={creature}
+            key={creature.id}
+            setSelectedCreature={setSelectedCreature}
+          />
+        ))}
       </div>
 
-      </main>
-      <CreatureDialog open={isDialogOpen} setOpen={setIsDialogOpen} creature={selectedCreature} />
+      <CreatureDialog
+        open={isDialogOpen}
+        setOpen={setIsDialogOpen}
+        creature={selectedCreature}
+      />
     </>
   );
 }
 
 export default App;
-
