@@ -4,6 +4,8 @@ import LoginPage from "./pages/LoginPage";
 import { useState, useEffect } from "react";
 import { Creature } from "types/creature";
 import NavBar from "./components/NavBar";
+import CreatePal from './pages/CreatePal';
+
 
 function App() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -29,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/creationPage" element={<CreatePal />} />
         </Routes>
       </main>
     </Router>
