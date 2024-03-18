@@ -1,7 +1,9 @@
 import NavBar from "../components/NavBar";
 import PokedexCard from "../components/PokedexCard";
 import { Creature } from "../../types/creature";
-
+import { InputForm } from "../components/SearchBar";
+import { useState, useEffect } from 'react';
+import CreatureDialog from "../components/CreatureDialog";
 
 const creatures: Creature[] = [
   {
@@ -36,22 +38,40 @@ const creatures: Creature[] = [
 ];
 
 
-const Home: React.FC = () => {
+function App() {
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedCreature, setSelectedCreature] = useState<Creature | null>(null);
+
+  useEffect(() => {
+    if (selectedCreature) {
+      setIsDialogOpen(true);
+    }
+  }, [selectedCreature]);
+  useEffect(() => {
+    if (!isDialogOpen) {
+      setSelectedCreature(null);
+    }
+  }, [isDialogOpen]);
+
   return (
     <>
       <NavBar />
       <main className="flex flex-col items-center justify-center h-screen">
+        <InputForm />
         <div className="flex flex-wrap gap-4">
       {creatures.map((creature) => (
-        <div>
-          <PokedexCard creature={creature} key={creature.id} />
-        </div>
+
+          <PokedexCard creature={creature} key={creature.id} setSelectedCreature={setSelectedCreature} />
+
       ))}
       </div>
 
       </main>
+      <CreatureDialog open={isDialogOpen} setOpen={setIsDialogOpen} creature={selectedCreature} />
     </>
   );
 }
 
-export default Home;
+export default App;
+
