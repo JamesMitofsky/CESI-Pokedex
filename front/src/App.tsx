@@ -1,6 +1,7 @@
 import NavBar from "./components/NavBar";
 import PokedexCard from "./components/PokedexCard";
 import { Creature } from "../types/creature";
+import { InputForm } from "./components/SearchBar";
 
 const creatures: Creature[] = [
   {
@@ -40,6 +41,7 @@ function App() {
     <>
       <NavBar />
       <main className="flex flex-col items-center justify-center h-screen">
+        <InputForm />
         <div className="flex flex-wrap gap-4">
       {creatures.map((creature) => (
         <div>
