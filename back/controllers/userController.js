@@ -2,10 +2,38 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
+const jwt = require("jsonwebtoken");
 
 exports.getUsers = async (req, res) => {
   const users = await prisma.user.findMany();
   res.json(users);
+};
+
+exports.loginUser = async (req, res) => {
+  const { Email, Password } = req.body;
+
+  try {
+    const user = await prisma.user.findUnique({ where: { Email } });
+
+    if (!user) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    const passwordMatch = await bcrypt.compare(Password, user.Password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    const token = jwt.sign({ userId: user.id }, secretKey, {
+      expiresIn: "12h",
+    });
+
+    res.json({ token });
+  } catch (error) {
+    console.error("Error logging in user:", error);
+    res.status(500).json({ error: "Could not log in user" });
+  }
 };
 
 exports.registerUser = async (req, res) => {
@@ -24,14 +52,14 @@ exports.registerUser = async (req, res) => {
   }
 };
 
-/*exports.updateUser = async (req, res) => {
-  const { id } = req.params;
-  const { Name, Email, Password } = req.body;
+exports.updateUser = async (req, res) => {
+  const { ID } = req.params;
+  const { Name, Email } = req.body;
 
   try {
     const updatedUser = await prisma.user.update({
-      where: { id: parseInt(id) },
-      data: { Name, Email, Password },
+      where: { ID: parseInt(ID) },
+      data: { Name, Email },
     });
     res.json(updatedUser);
   } catch (error) {
@@ -39,4 +67,17 @@ exports.registerUser = async (req, res) => {
     res.status(500).json({ error: "Could not update user" });
   }
 };
-*/
+
+exports.deleteUser = async (req, res) => {
+  const { ID } = req.params;
+
+  try {
+    await prisma.user.delete({
+      where: { ID: parseInt(ID) },
+    });
+    res.json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ error: "Could not delete user" });
+  }
+};

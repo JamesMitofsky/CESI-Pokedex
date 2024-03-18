@@ -19,7 +19,7 @@ model Pals {
 
 model User {
   ID Int @id @default(autoincrement())
-  Name String 
-  Email String 
+  Name String @unique
+  Email String @unique
   Password String 
 }
