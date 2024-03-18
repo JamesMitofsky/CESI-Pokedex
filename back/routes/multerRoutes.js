@@ -23,5 +23,3 @@ exports.createThing = (req, res, next) => {
 
 
 module.exports = app;
-
-// the below code fragment can be found in:
