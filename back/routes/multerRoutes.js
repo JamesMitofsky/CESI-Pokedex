@@ -1,7 +1,4 @@
 import express from 'express';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import jsSecret from '../prisma/DB/PAL.db';
 
 const app = express();
 
