@@ -7,6 +7,6 @@ router.get("/", getPals);
 router.post("/createPal", createPal);
 router.put("/updatePal", updatePal);
 router.delete("/deletePal", deletePal);
-router.get("/createManyPals", createManyPals);
+router.post("/createManyPals", createManyPals);
 
 module.exports = router;

@@ -1,11 +1,4 @@
 {
-  "sqltools.connections": [
-    {
-      "previewLimit": 50,
-      "driver": "SQLite",
-      "name": "dev",
-      "database": "${workspaceFolder:CESI-Pokedex}/back/prisma/DB/PAL.db"
-    }
-  ],
+  "sqltools.connections": [],
   "sqltools.useNodeRuntime": true
 }

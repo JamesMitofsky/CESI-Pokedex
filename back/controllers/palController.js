@@ -87,8 +87,8 @@ exports.updatePal = async (req, res) => {
 };
 
 exports.createManyPals = async (req, res) => {
-  const createManyPals = await prisma.user.createMany({
+  const pals = await prisma.pal.createMany({
     data: req.body,
   })
-  res.json(createManyPals);
+  res.json(pals);
 }

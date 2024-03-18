@@ -10,7 +10,7 @@ datasource db {
 model Pal {
   idPal       Int @id @default(autoincrement())
   number String
-  name         String
+  name         String 
   url String
   elements Element[]
   partnerSkillId  Int
@@ -21,24 +21,24 @@ model Pal {
 
 model Element {
   idElement Int @id @default(autoincrement())
-  name String
+  name String @unique
   pals Pal[]
 }
 
 model PartnerSkill {
   idPartnerSkill Int @id @default(autoincrement())
-  libelle String
+  libelle String @unique
   pals Pal[]
 }
 
 model WorksFor {
   idWorksFor Int @id @default(autoincrement())
-  libelle String
+  libelle String @unique
   pals Pal[]
 }
 
 model Drop {
   idDrop Int @id @default(autoincrement())
-  name String
+  name String @unique
   pals Pal[]
 }
