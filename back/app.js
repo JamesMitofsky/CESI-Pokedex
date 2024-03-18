@@ -6,6 +6,10 @@ import jwt from "jsonwebtoken";
 
 import userRoutes from "./routes/userRoutes";
 import palRoutes from "./routes/palRoutes";
+import partnerSkillRoutes from "./routes/partnerSkillRoutes";
+import dropRoutes from "./routes/dropRoutes";
+import elementRoutes from "./routes/elementRoutes";
+import worksForRoutes from "./routes/worksForRoutes";
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -26,7 +30,11 @@ app.use(cors(corsOptions));
 app.use(helmet(helmetOptions));
 
 app.use("/api/users", userRoutes); // Route pour les utilisateurs
-app.use("/api/pals", palRoutes); // Route pour les utilisateurs
+app.use("/api/pals", palRoutes); // Route pour les pals
+app.use("/api/partnerSkills", partnerSkillRoutes); // Route pour les partnerSkills
+app.use("/api/drops", dropRoutes); // Route pour les partnerSkills
+app.use("/api/elements", elementRoutes); // Route pour les elements
+app.use("/api/worksFor", worksForRoutes); // Route pour les worksFor
 
 exports.signup = (req, res, next) => {
   bcrypt

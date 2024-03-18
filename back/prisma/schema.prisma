@@ -7,37 +7,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Pals {
-  idPals       Int @id @default(autoincrement())
-  Number String
-  Name         String
-  Url String
+model Pal {
+  idPal       Int @id @default(autoincrement())
+  number String
+  name         String
+  url String
   elements Element[]
-  PartnerSkills PartnerSkill[]
-  WorksFor WorksFor []
-  Drops Drop[]
+  partnerSkillId  Int
+  partnerSkill    PartnerSkill   @relation(fields: [partnerSkillId], references: [idPartnerSkill])
+  worksFor WorksFor []
+  drops Drop[]
 }
 
 model Element {
   idElement Int @id @default(autoincrement())
-  Name String
-  pals Pals[]
+  name String
+  pals Pal[]
 }
 
 model PartnerSkill {
   idPartnerSkill Int @id @default(autoincrement())
   libelle String
-  pals Pals[]
+  pals Pal[]
 }
 
 model WorksFor {
   idWorksFor Int @id @default(autoincrement())
   libelle String
-  pals Pals[]
+  pals Pal[]
 }
 
 model Drop {
   idDrop Int @id @default(autoincrement())
-  Name String
-  pals Pals[]
+  name String
+  pals Pal[]
 }
