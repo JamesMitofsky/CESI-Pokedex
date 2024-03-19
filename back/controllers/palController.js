@@ -85,10 +85,3 @@ exports.updatePal = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
-
-exports.createManyPals = async (req, res) => {
-  const pals = await prisma.pal.createMany({
-    data: req.body,
-  })
-  res.json(pals);
-}
