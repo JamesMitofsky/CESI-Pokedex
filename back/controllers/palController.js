@@ -11,7 +11,7 @@ exports.getPals = async (req, res) => {
         drops: true,
       },
     });
-    res.json(pals);
+    res.status(200).json({ message: "OK, you get all pals", pals });
   } catch (error) {
     console.error('Error getting pals:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -30,7 +30,9 @@ exports.getOnePal = async (req, res) => {
         drops: true,
       },
     });
-    res.json(pal);
+    pal !== null
+      ? res.status(200).json({ message: "OK, you get pal id " + idPal, pal })
+      : res.status(204).json({ message: "No content for id " + idPal, pal })
   } catch (error) {
     console.error('Error getting pal:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -54,7 +56,7 @@ exports.createPal = async (req, res) => {
         drops: true,
       },
     });
-    res.json(pal);
+    res.status(201).json({ message: "Pal created", pal })
   } catch (error) {
     console.error('Error creating pal:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -75,7 +77,7 @@ exports.deletePal = async (req, res) => {
         drops: true,
       },
     });
-    res.json(pal);
+    res.status(204).json({ message: "Pal deleted", pal })
   } catch (error) {
     console.error('Error deleting pal:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -98,7 +100,7 @@ exports.updatePal = async (req, res) => {
         drops: true,
       },
     });
-    res.json(pal);
+    res.status(200).json({ message: "Pal modified", pal })
   } catch (error) {
     console.error('Error updating pal:', error);
     res.status(500).json({ error: 'Internal server error' });
