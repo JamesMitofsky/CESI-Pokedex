@@ -2,26 +2,39 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
 
 import { Creature } from "../../types/creature";
 
-export default function PokedexCard({ creature, setSelectedCreature }: { creature: Creature, setSelectedCreature: (creature: Creature) => void}) {
+export default function PokedexCard({
+  creature,
+  setSelectedCreature,
+}: {
+  creature: Creature;
+  setSelectedCreature: (creature: Creature) => void;
+}) {
   return (
-    <Card className="flex flex-col w-96 m-2" onClick={() => setSelectedCreature(creature)}>
+    <Card
+      className="flex flex-col w-96 m-2"
+      onClick={() => setSelectedCreature(creature)}
+    >
       <CardHeader>
         <CardTitle>{creature.name}</CardTitle>
         <CardDescription>
-          <div> Element : {creature.element}</div>
+          <div>
+            Element :
+            {creature.elements.map((element) => (
+              <div key={element.idElement}>{element.name}</div>
+            ))}
+          </div>
           <div> Creature number : {creature.number}</div>
-          <div> Skills : {creature.partnerSkill}</div>
+          <div> Skills : {creature.partnerSkill.libelle}</div>
           <div>
             Drops when defeated :
-            {creature.drop.map((drop) => (
-              <div key={creature.id}> {drop}</div>
+            {creature.drops.map((drop) => (
+              <div key={creature.idPal}> {drop.name}</div>
             ))}
           </div>
         </CardDescription>
@@ -29,12 +42,11 @@ export default function PokedexCard({ creature, setSelectedCreature }: { creatur
       <CardContent>
         Works for :
         {creature.worksFor.map((work) => (
-          <div key={creature.id}>
-            Name: {work.name}, Level: {work.level}
+          <div key={creature.idPal}>
+            Name: {work.libelle}, Level: {work.libelle}
           </div>
         ))}
       </CardContent>
-      <CardFooter>{/* <div>Card Footer</div> */}</CardFooter>
     </Card>
   );
 }
