@@ -12,7 +12,7 @@ import elementRoutes from "./routes/elementRoutes";
 import worksForRoutes from "./routes/worksForRoutes";
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "http://localhost:5173"],
   optionsSuccessStatus: 200,
 };
 
