@@ -5,43 +5,52 @@ import { useState, useEffect } from "react";
 import CreatureDialog from "../components/CreatureDialog";
 import LinkCreation from "../components/LinkToCreationPageButton";
 
-const creatures: Creature[] = [
-  {
-    id: 1,
-    name: "Dragon",
-    number: 101,
-    element: "Feu",
-    partnerSkill: "Fire Breath",
-    worksFor: [
-      {
-        name: "Fire Kingdom",
-        level: 5,
-      },
-    ],
-    drop: ["Dragon Scale", "Dragon Tooth"],
-  },
-  {
-    id: 2,
-    name: "Mermaid",
-    number: 102,
-    element: "Eau",
-    partnerSkill: "Water Control",
-    worksFor: [
-      {
-        name: "Ocean Kingdom",
-        level: 4,
-      },
-    ],
-    drop: ["Mermaid Scale", "Pearl"],
-  },
-  // Add more creatures as needed
-];
+// const creatures: Creature[] = [
+//   {
+//     id: 1,
+//     name: "Dragon",
+//     number: 101,
+//     element: "Feu",
+//     partnerSkill: "Fire Breath",
+//     worksFor: [
+//       {
+//         name: "Fire Kingdom",
+//         level: 5,
+//       },
+//     ],
+//     drop: ["Dragon Scale", "Dragon Tooth"],
+//   },
+//   {
+//     id: 2,
+//     name: "Mermaid",
+//     number: 102,
+//     element: "Eau",
+//     partnerSkill: "Water Control",
+//     worksFor: [
+//       {
+//         name: "Ocean Kingdom",
+//         level: 4,
+//       },
+//     ],
+//     drop: ["Mermaid Scale", "Pearl"],
+//   },
+//   // Add more creatures as needed
+// ];
 
 function App() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedCreature, setSelectedCreature] = useState<Creature | null>(
     null
   );
+
+  const [pals, setPals] = useState<Creature[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/pals")
+      .then((response) => response.json())
+      .then((data) => setPals(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
 
   useEffect(() => {
     if (selectedCreature) {
@@ -58,7 +67,7 @@ function App() {
     <>
       <InputForm />
       <div className="w-full flex flex-wrap gap-4 justify-center">
-        {creatures.map((creature) => (
+        {pals.map((creature) => (
           <PokedexCard
             creature={creature}
             key={creature.id}
@@ -67,8 +76,7 @@ function App() {
         ))}
       </div>
 
-
-      <LinkCreation/>
+      <LinkCreation />
       <CreatureDialog
         open={isDialogOpen}
         setOpen={setIsDialogOpen}
