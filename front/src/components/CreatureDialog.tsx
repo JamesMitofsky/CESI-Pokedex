@@ -1,4 +1,6 @@
 import { Creature } from "types/creature";
+import EditPalButton from "./EditPalButton";
+import DeletePalButton from "./DeletePalButton";
 import {
   Dialog,
   DialogContent,
@@ -64,6 +66,10 @@ export default function CreatureDialog({
                 </div>
               </DialogDescription>
             </DialogHeader>
+            <div className="flex justify-between">
+              <DeletePalButton />
+              <EditPalButton />
+            </div>
           </DialogContent>
         </Dialog>
       )}
