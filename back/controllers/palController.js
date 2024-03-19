@@ -51,9 +51,9 @@ exports.createPal = async (req, res) => {
         },
         partnerSkill: { connect: { idPartnerSkill: partnerSkill } },
         worksFor: {
-          connect: worksFor.map((WorkFor) => ({ idWorksFor: WorkFor.id })),
+          connect: worksFor.map((workFor) => ({ idWorksFor: workFor.id })),
         },
-        drops: { connect: drops.map((Drop) => ({ idDrop: Drop.id })) },
+        drops: { connect: drops.map((drop) => ({ idDrop: drop.id })) },
       },
       include: {
         elements: true,
@@ -103,9 +103,9 @@ exports.updatePal = async (req, res) => {
         },
         partnerSkill: { connect: { idPartnerSkill: partnerSkill } },
         worksFor: {
-          connect: worksFor.map((WorkFor) => ({ idWorksFor: WorkFor.id })),
+          connect: worksFor.map((workFor) => ({ idWorksFor: workFor.id })),
         },
-        drops: { connect: drops.map((Drop) => ({ idDrop: Drop.id })) },
+        drops: { connect: drops.map((drop) => ({ idDrop: drop.id })) },
       },
       include: {
         elements: true,
