@@ -18,6 +18,25 @@ exports.getPals = async (req, res) => {
   }
 };
 
+exports.getOnePal = async (req, res) => {
+  const { idPal } = req.body;
+  try {
+    const pal = await prisma.pal.findUnique({
+      where: { idPal: idPal },
+      include: {
+        elements: true,
+        partnerSkill: true,
+        worksFor: true,
+        drops: true,
+      },
+    });
+    res.json(pal);
+  } catch (error) {
+    console.error('Error getting pal:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 exports.createPal = async (req, res) => {
   const { number, name, url, elements, partnerSkill, worksFor, drops } = req.body;
   try {
