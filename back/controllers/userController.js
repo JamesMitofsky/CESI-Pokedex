@@ -32,9 +32,7 @@ exports.loginUser = async (req, res) => {
     // Envoi du token dans un cookie
     res.cookie("token", token, {
       maxAge: 12 * 60 * 60 * 1000, // Durée de validité du cookie en millisecondes (12 heures)
-      httpOnly: true, // Empêche l'accès au cookie via JavaScript
-      // secure: true, // Activez cette option si vous utilisez HTTPS
-      // sameSite: 'strict', // Ou 'lax' ou 'none' selon vos besoins
+      httpOnly: true,
     });
 
     res.json({ token });
