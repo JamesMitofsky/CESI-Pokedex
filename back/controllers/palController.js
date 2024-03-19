@@ -13,8 +13,8 @@ exports.getPals = async (req, res) => {
     });
     res.json(pals);
   } catch (error) {
-    console.error('Error getting pals:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error getting pals:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -32,20 +32,28 @@ exports.getOnePal = async (req, res) => {
     });
     res.json(pal);
   } catch (error) {
-    console.error('Error getting pal:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error getting pal:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
 exports.createPal = async (req, res) => {
-  const { number, name, url, elements, partnerSkill, worksFor, drops } = req.body;
+  const { number, name, url, elements, partnerSkill, worksFor, drops } =
+    req.body;
   try {
     const pal = await prisma.pal.create({
       data: {
-        number, name, url, elements: { connect: elements.map((element) => ({ idElement: element.id })) },
+        number,
+        name,
+        url,
+        elements: {
+          connect: elements.map((element) => ({ idElement: element.id })),
+        },
         partnerSkill: { connect: { idPartnerSkill: partnerSkill } },
-        worksFor: { connect: worksFor.map((WorkFor) => ({ idWorksFor: WorkFor.id })) },
-        drops: { connect: drops.map((Drop) => ({ idDrop: Drop.id })) }
+        worksFor: {
+          connect: worksFor.map((workFor) => ({ idWorksFor: workFor.id })),
+        },
+        drops: { connect: drops.map((drop) => ({ idDrop: drop.id })) },
       },
       include: {
         elements: true,
@@ -56,12 +64,10 @@ exports.createPal = async (req, res) => {
     });
     res.json(pal);
   } catch (error) {
-    console.error('Error creating pal:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error creating pal:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
-
-
 
 exports.deletePal = async (req, res) => {
   const { idPal } = req.body;
@@ -77,20 +83,30 @@ exports.deletePal = async (req, res) => {
     });
     res.json(pal);
   } catch (error) {
-    console.error('Error deleting pal:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error deleting pal:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
 exports.updatePal = async (req, res) => {
-  const { idPal, number, name, url, elements, partnerSkill, worksFor, drops } = req.body;
+  const { idPal, number, name, url, elements, partnerSkill, worksFor, drops } =
+    req.body;
   try {
     const pal = await prisma.pal.update({
       where: { idPal: idPal },
-      data: {number, name, url, elements: { connect: elements.map((element) => ({ idElement: element.id })) },
-      partnerSkill: { connect: { idPartnerSkill: partnerSkill } },
-      worksFor: { connect: worksFor.map((WorkFor) => ({ idworksFor: WorkFor.id })) },
-      drops: { connect: drops.map((Drop) => ({ idDrop: Drop.id })) }},
+      data: {
+        number,
+        name,
+        url,
+        elements: {
+          connect: elements.map((element) => ({ idElement: element.id })),
+        },
+        partnerSkill: { connect: { idPartnerSkill: partnerSkill } },
+        worksFor: {
+          connect: worksFor.map((workFor) => ({ idWorksFor: workFor.id })),
+        },
+        drops: { connect: drops.map((drop) => ({ idDrop: drop.id })) },
+      },
       include: {
         elements: true,
         partnerSkill: true,
@@ -100,7 +116,7 @@ exports.updatePal = async (req, res) => {
     });
     res.json(pal);
   } catch (error) {
-    console.error('Error updating pal:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error updating pal:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
