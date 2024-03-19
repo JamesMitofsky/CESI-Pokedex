@@ -1,5 +1,5 @@
 import express from "express";
-import { getPartnerSkills, createPartnerSkill, updatePartnerSkill, deletePartnerSkill, createManyPals } from "../controllers/partnerSkillController";
+import { getPartnerSkills, createPartnerSkill, updatePartnerSkill, deletePartnerSkill } from "../controllers/partnerSkillController";
 
 const router = express.Router();
 
