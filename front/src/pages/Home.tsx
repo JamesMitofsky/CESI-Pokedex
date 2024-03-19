@@ -35,7 +35,7 @@ const creatures: Creature[] = [
     drop: ["Mermaid Scale", "Pearl"],
   },
   {
-    id: 1,
+    id: 3,
     name: "Dragon",
     number: 101,
     element: "Feu",
@@ -49,7 +49,7 @@ const creatures: Creature[] = [
     drop: ["Dragon Scale", "Dragon Tooth"],
   },
   {
-    id: 2,
+    id: 4,
     name: "Mermaid",
     number: 102,
     element: "Eau",
@@ -62,7 +62,7 @@ const creatures: Creature[] = [
     ],
     drop: ["Mermaid Scale", "Pearl"],
   },{
-    id: 1,
+    id: 5,
     name: "Dragon",
     number: 101,
     element: "Feu",
@@ -76,7 +76,7 @@ const creatures: Creature[] = [
     drop: ["Dragon Scale", "Dragon Tooth"],
   },
   {
-    id: 2,
+    id: 6,
     name: "Mermaid",
     number: 102,
     element: "Eau",
@@ -89,7 +89,7 @@ const creatures: Creature[] = [
     ],
     drop: ["Mermaid Scale", "Pearl"],
   },{
-    id: 1,
+    id: 7,
     name: "Dragon",
     number: 101,
     element: "Feu",
@@ -103,7 +103,7 @@ const creatures: Creature[] = [
     drop: ["Dragon Scale", "Dragon Tooth"],
   },
   {
-    id: 2,
+    id: 8,
     name: "Mermaid",
     number: 102,
     element: "Eau",
@@ -116,7 +116,7 @@ const creatures: Creature[] = [
     ],
     drop: ["Mermaid Scale", "Pearl"],
   },{
-    id: 1,
+    id: 9,
     name: "Dragon",
     number: 101,
     element: "Feu",
@@ -130,7 +130,7 @@ const creatures: Creature[] = [
     drop: ["Dragon Scale", "Dragon Tooth"],
   },
   {
-    id: 2,
+    id: 10,
     name: "Mermaid",
     number: 102,
     element: "Eau",
@@ -143,7 +143,7 @@ const creatures: Creature[] = [
     ],
     drop: ["Mermaid Scale", "Pearl"],
   },{
-    id: 1,
+    id: 11,
     name: "Dragon",
     number: 101,
     element: "Feu",
@@ -157,7 +157,7 @@ const creatures: Creature[] = [
     drop: ["Dragon Scale", "Dragon Tooth"],
   },
   {
-    id: 2,
+    id: 12,
     name: "Mermaid",
     number: 102,
     element: "Eau",
@@ -170,7 +170,7 @@ const creatures: Creature[] = [
     ],
     drop: ["Mermaid Scale", "Pearl"],
   },{
-    id: 1,
+    id: 13,
     name: "Dragon",
     number: 101,
     element: "Feu",
@@ -184,7 +184,7 @@ const creatures: Creature[] = [
     drop: ["Dragon Scale", "Dragon Tooth"],
   },
   {
-    id: 2,
+    id: 14,
     name: "Mermaid",
     number: 102,
     element: "Eau",
@@ -197,7 +197,7 @@ const creatures: Creature[] = [
     ],
     drop: ["Mermaid Scale", "Pearl"],
   },{
-    id: 1,
+    id: 15,
     name: "Dragon",
     number: 101,
     element: "Feu",
@@ -211,7 +211,7 @@ const creatures: Creature[] = [
     drop: ["Dragon Scale", "Dragon Tooth"],
   },
   {
-    id: 2,
+    id: 16,
     name: "Mermaid",
     number: 102,
     element: "Eau",
@@ -224,7 +224,7 @@ const creatures: Creature[] = [
     ],
     drop: ["Mermaid Scale", "Pearl"],
   },{
-    id: 1,
+    id: 17,
     name: "Dragon",
     number: 101,
     element: "Feu",
@@ -237,20 +237,7 @@ const creatures: Creature[] = [
     ],
     drop: ["Dragon Scale", "Dragon Tooth"],
   },
-  {
-    id: 2,
-    name: "Mermaid",
-    number: 102,
-    element: "Eau",
-    partnerSkill: "Water Control",
-    worksFor: [
-      {
-        name: "Ocean Kingdom",
-        level: 4,
-      },
-    ],
-    drop: ["Mermaid Scale", "Pearl"],
-  },
+ 
 ];
 
 function App() {

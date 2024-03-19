@@ -45,8 +45,8 @@ const formInputInfo = [
   },
   {
     id: "worksForLevel",
-    label: "Niveau du Royaume",
-    placeholder: "Quel niveau du Royaume a ce Pal ?",
+    label: "Niveau du Pal",
+    placeholder: "Quel niveau du Pal ?",
   },
 ] as const;
 
@@ -101,11 +101,17 @@ export default function CreatePal() {
 
             if( id === 'element'){ return (
               
-            <div className= "max-w-96 w-full space-y-2 m-2">
+            <div key={id} className= "max-w-96 w-full space-y-2 m-2">
               <div className="max-w-96 w-full text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"> Element </div>
-              <Select>
+              <FormField
+              control={form.control}
+              name={id}
+              render={({ field }) => (
+
+         
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <SelectTrigger className="max-w-96 w-full">
-                  <SelectValue placeholder="Selectionner un element" />
+                  <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="Feu">Feu</SelectItem>
@@ -115,6 +121,8 @@ export default function CreatePal() {
                   <SelectItem value="Neutre">Neutre</SelectItem>  
                 </SelectContent>
               </Select>
+              )}
+              />
            </div>
             )   
 
@@ -122,10 +130,11 @@ export default function CreatePal() {
             
             return (
             <FormField
+            key={id}
               control={form.control}
               name={id}
               render={({ field }) => (
-                <FormItem className="flex flex-col w-96 m-2">
+                <FormItem key={id} className="flex flex-col w-96 m-2">
                   <FormLabel>{label}</FormLabel>
                   <FormControl>
                     <Input placeholder={placeholder} {...field} />
