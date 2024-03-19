@@ -7,6 +7,9 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+#sql
+dev.sessions.sql
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -128,3 +131,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+dev.session.sql
+
+#VSgitCode
+/.vscode
+/.vscode/settings.json

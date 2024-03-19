@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Pal {
+  idPal       Int @id @default(autoincrement())
+  number String
+  name         String 
+  url String
+  elements Element[]
+  partnerSkillId  Int
+  partnerSkill    PartnerSkill   @relation(fields: [partnerSkillId], references: [idPartnerSkill])
+  worksFor WorksFor []
+  drops Drop[]
+}
+
+model Element {
+  idElement Int @id @default(autoincrement())
+  name String @unique
+  pals Pal[]
+}
+
+model PartnerSkill {
+  idPartnerSkill Int @id @default(autoincrement())
+  libelle String @unique
+  pals Pal[]
+}
+
+model WorksFor {
+  idWorksFor Int @id @default(autoincrement())
+  libelle String @unique
+  pals Pal[]
+}
+
+model Drop {
+  idDrop Int @id @default(autoincrement())
+  name String @unique
+  pals Pal[]
+}
+
+model User {
+  ID Int @id @default(autoincrement())
+  Name String @unique
+  Email String @unique
+  Password String 
+}
