@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import CreatureDialog from "../components/CreatureDialog";
 import LinkCreation from "../components/LinkToCreationPageButton";
 import PokedexCard from "@/components/PokedexCard";
+import CreatureDialogEdit from "@/components/CreatureDialogEdit";
 
-function App() {
+function Home() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedCreature, setSelectedCreature] = useState<Creature | null>(
     null
   );
+  const [isModifie, setIsModifie] = useState(false)
 
   const [pals, setPals] = useState<Creature[]>([]);
 
@@ -20,11 +22,11 @@ function App() {
       .catch((error) => console.error("Error:", error));
   }, []);
 
-  useEffect(() => {
-    if (selectedCreature) {
-      setIsDialogOpen(true);
-    }
-  }, [selectedCreature]);
+  // useEffect(() => {
+  //   if (selectedCreature) {
+  //     setIsDialogOpen(true);
+  //   }
+  // }, [selectedCreature]);
   useEffect(() => {
     if (!isDialogOpen) {
       setSelectedCreature(null);
@@ -40,6 +42,7 @@ function App() {
             key={pal.idPal}
             creature={pal}
             setSelectedCreature={setSelectedCreature}
+            setIsModifie={setIsModifie}
           />
         ))}
       </div>
@@ -51,8 +54,10 @@ function App() {
         setOpen={setIsDialogOpen}
         creature={selectedCreature}
       />
+      {isModifie &&
+      <CreatureDialogEdit creature={selectedCreature} isModifie={isModifie} setIsModifie={setIsModifie}/>}
     </>
   );
 }
 
-export default App;
+export default Home;
