@@ -91,7 +91,7 @@ export default function FormForPalDetails({
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
-    handleSubmit?.(values);
+    handleSubmit(values);
   }
 
   return (
