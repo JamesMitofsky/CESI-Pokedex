@@ -85,7 +85,7 @@ export default function CreatePal() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-center">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-center w-3/5">
         <div className="w-full flex flex-wrap gap-4 justify-center">
           {formInputInfo.map(({ id, label, placeholder }) => (
             <FormField
@@ -103,7 +103,7 @@ export default function CreatePal() {
             />
           ))}
         </div>
-        <Button className="w-96 m-auto mt-4 max-w-96" type="submit">Créer</Button>
+        <Button className=" m-auto mt-4 max-w-96 w-full" type="submit">Créer</Button>
       </form>
     </Form>
   );
