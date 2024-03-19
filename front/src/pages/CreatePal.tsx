@@ -1,6 +1,17 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 
 const formInputInfo = [
   {
@@ -87,7 +98,28 @@ export default function CreatePal() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-center w-3/5">
         <div className="w-full flex flex-wrap gap-4 justify-center">
-          {formInputInfo.map(({ id, label, placeholder }) => (
+          {formInputInfo.map(({ id, label, placeholder }) => {
+
+            if( id === 'element'){ return (
+              
+            <div className= "max-w-96 w-full space-y-2 m-2">
+              <div className="max-w-96 w-full text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"> Element </div>
+              <Select>
+                <SelectTrigger className="max-w-96 w-full">
+                  <SelectValue placeholder="Selectionner un element" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Light</SelectItem>
+                  <SelectItem value="dark">Dark</SelectItem>
+                  <SelectItem value="system">System</SelectItem>
+                </SelectContent>
+              </Select>
+           </div>
+            )   
+
+            } else {
+            
+            return (
             <FormField
               control={form.control}
               name={id}
@@ -101,7 +133,8 @@ export default function CreatePal() {
                 </FormItem>
               )}
             />
-          ))}
+          )}
+          })}
         </div>
         <Button className=" m-auto mt-4 max-w-96 w-full" type="submit">Créer</Button>
       </form>
