@@ -52,28 +52,13 @@ import {
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  element: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  creatureNumber: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-
-  skills: z
-    .string()
-    .min(2, { message: "Username must be at least 2 characters." }),
-  dropsWhenDefeated: z
-    .string()
-    .min(2, { message: "Username must be at least 2 characters." }),
-  worksForName: z
-    .string()
-    .min(2, { message: "Username must be at least 2 characters." }),
-  worksForLevel: z
-    .string()
-    .min(2, { message: "Username must be at least 2 characters." }),
+  name: z.string(),
+  element: z.string(),
+  creatureNumber: z.string(),
+  skills: z.string(),
+  dropsWhenDefeated: z.string(),
+  worksForName: z.string(),
+  worksForLevel: z.string(),
 });
 
 export default function CreatePal() {
