@@ -1,16 +1,35 @@
-type Work = {
-  name: string;
-  level: number;
+type ElementName = "Feu" | "Eau" | "Terre" | "Vent" | "Neutre";
+
+type PalElement = {
+  idElement: number;
+  name: ElementName;
 };
 
-type NatureElement = "Feu" | "Eau" | "Terre" | "Vent" | "Neutre";
-
-export type Creature = {
-  id: number;
+type Creature = {
+  idPal: number;
+  number: string;
   name: string;
-  number: number;
-  element: NatureElement;
-  partnerSkill: string;
-  worksFor: Work[];
-  drop: string[];
+  url: string;
+  elements: PalElement[];
+  partnerSkillId: number;
+  partnerSkill: PartnerSkill;
+  worksFor: WorksFor[];
+  drops: Drop[];
 };
+
+type PartnerSkill = {
+  idPartnerSkill: number;
+  libelle: string;
+};
+
+type WorksFor = {
+  idWorksFor: number;
+  libelle: string;
+};
+
+type Drop = {
+  idDrop: number;
+  name: string;
+};
+
+export type { Creature };

@@ -26,3 +26,10 @@ react-vite-ui/
   ├── tsconfig.json      # TypeScript configuration
   └── vite.config.ts     # Vite configuration
 ```
+
+## Debugging
+
+In VS Code:
+
+1. Run `npm run dev` from the terminal.
+2. Run the debugger from the debug menu.

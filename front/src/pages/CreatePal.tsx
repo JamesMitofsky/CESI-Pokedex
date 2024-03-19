@@ -2,6 +2,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+
 const formInputInfo = [
   {
     id: "name",
@@ -35,8 +45,8 @@ const formInputInfo = [
   },
   {
     id: "worksForLevel",
-    label: "Niveau du Royaume",
-    placeholder: "Quel niveau du Royaume a ce Pal ?",
+    label: "Niveau du Pal",
+    placeholder: "Quel niveau du Pal ?",
   },
 ] as const;
 
@@ -85,14 +95,46 @@ export default function CreatePal() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-center">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-center w-3/5">
         <div className="w-full flex flex-wrap gap-4 justify-center">
-          {formInputInfo.map(({ id, label, placeholder }) => (
-            <FormField
+          {formInputInfo.map(({ id, label, placeholder }) => {
+
+            if( id === 'element'){ return (
+              
+            <div key={id} className= "max-w-96 w-full space-y-2 m-2">
+              <div className="max-w-96 w-full text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"> Element </div>
+              <FormField
               control={form.control}
               name={id}
               render={({ field }) => (
-                <FormItem className="flex flex-col w-96 m-2">
+
+         
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <SelectTrigger className="max-w-96 w-full">
+                  <SelectValue placeholder={placeholder} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Feu">Feu</SelectItem>
+                  <SelectItem value="Eau">Eau</SelectItem>
+                  <SelectItem value="Terre">Terre</SelectItem>
+                  <SelectItem value="Vent">Vent</SelectItem>
+                  <SelectItem value="Neutre">Neutre</SelectItem>  
+                </SelectContent>
+              </Select>
+              )}
+              />
+           </div>
+            )   
+
+            } else {
+            
+            return (
+            <FormField
+            key={id}
+              control={form.control}
+              name={id}
+              render={({ field }) => (
+                <FormItem key={id} className="flex flex-col w-96 m-2">
                   <FormLabel>{label}</FormLabel>
                   <FormControl>
                     <Input placeholder={placeholder} {...field} />
@@ -101,9 +143,10 @@ export default function CreatePal() {
                 </FormItem>
               )}
             />
-          ))}
+          )}
+          })}
         </div>
-        <Button className="w-96 m-auto mt-4 max-w-96" type="submit">Créer</Button>
+        <Button className=" m-auto mt-4 max-w-96 w-full" type="submit">Créer</Button>
       </form>
     </Form>
   );
