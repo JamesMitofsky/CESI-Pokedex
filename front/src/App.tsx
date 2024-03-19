@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Creature } from "types/creature";
 import NavBar from "./components/NavBar";
 import CreatePal from './pages/CreatePal';
+import ModifyPal from "./pages/ModifyPal";
 
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/creationPage" element={<CreatePal />} />
+          <Route path="/creer" element={<CreatePal />} />
+          <Route path="/modifier" element={<ModifyPal />} />
         </Routes>
       </main>
     </Router>
