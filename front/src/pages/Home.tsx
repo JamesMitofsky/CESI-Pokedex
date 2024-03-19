@@ -67,9 +67,8 @@ function App() {
         ))}
       </div>
 
-    <div className="pb-16">
+
       <LinkCreation/>
-    </div>
       <CreatureDialog
         open={isDialogOpen}
         setOpen={setIsDialogOpen}
