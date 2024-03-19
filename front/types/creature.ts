@@ -1,6 +1,6 @@
 type ElementName = "Feu" | "Eau" | "Terre" | "Vent" | "Neutre";
 
-type Element = {
+type PalElement = {
   idElement: number;
   name: ElementName;
 };
@@ -10,7 +10,7 @@ type Creature = {
   number: string;
   name: string;
   url: string;
-  elements: Element[];
+  elements: PalElement[];
   partnerSkillId: number;
   partnerSkill: PartnerSkill;
   worksFor: WorksFor[];
