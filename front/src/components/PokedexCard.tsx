@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-
 import { Creature } from "../../types/creature";
 
 export default function PokedexCard({
