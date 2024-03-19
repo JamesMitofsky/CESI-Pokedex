@@ -246,6 +246,15 @@ function App() {
     null
   );
 
+  const [pals, setPals] = useState<Creature[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/pals")
+      .then((response) => response.json())
+      .then((data) => setPals(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
+
   useEffect(() => {
     if (selectedCreature) {
       setIsDialogOpen(true);
