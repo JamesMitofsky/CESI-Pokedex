@@ -1,8 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+
 
 import {
   Select,
@@ -109,9 +108,11 @@ export default function CreatePal() {
                   <SelectValue placeholder="Selectionner un element" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light">Light</SelectItem>
-                  <SelectItem value="dark">Dark</SelectItem>
-                  <SelectItem value="system">System</SelectItem>
+                  <SelectItem value="Feu">Feu</SelectItem>
+                  <SelectItem value="Eau">Eau</SelectItem>
+                  <SelectItem value="Terre">Terre</SelectItem>
+                  <SelectItem value="Vent">Vent</SelectItem>
+                  <SelectItem value="Neutre">Neutre</SelectItem>  
                 </SelectContent>
               </Select>
            </div>
