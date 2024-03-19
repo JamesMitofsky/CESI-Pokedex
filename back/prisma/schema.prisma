@@ -42,3 +42,10 @@ model Drop {
   name String @unique
   pals Pal[]
 }
+
+model User {
+  ID Int @id @default(autoincrement())
+  Name String @unique
+  Email String @unique
+  Password String 
+}
